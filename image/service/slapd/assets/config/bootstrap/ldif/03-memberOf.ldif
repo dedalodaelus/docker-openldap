@@ -15,3 +15,39 @@ olcMemberOfRefInt: TRUE
 olcMemberOfGroupOC: groupOfUniqueNames
 olcMemberOfMemberAD: uniqueMember
 olcMemberOfMemberOfAD: memberOf
+
+# Backend memberOf overlay
+dn: olcOverlay={0}memberof,olcDatabase={1}{{ LDAP_BACKEND }},cn=config
+changetype: add
+objectClass: olcOverlayConfig
+objectClass: olcMemberOf
+olcOverlay: {0}memberof
+olcMemberOfDangling: error
+olcMemberOfRefInt: TRUE
+olcMemberOfGroupOC: groupOfNamesSH
+olcMemberOfMemberAD: member
+olcMemberOfMemberOfAD: memberOf
+
+# Backend memberOf overlay
+dn: olcOverlay={0}memberof,olcDatabase={1}{{ LDAP_BACKEND }},cn=config
+changetype: add
+objectClass: olcOverlayConfig
+objectClass: olcMemberOf
+olcOverlay: {0}memberof
+olcMemberOfDangling: error
+olcMemberOfRefInt: TRUE
+olcMemberOfGroupOC: permissionSH
+olcMemberOfMemberAD: groupPermission
+olcMemberOfMemberOfAD: permission
+
+# Backend memberOf overlay
+dn: olcOverlay={0}memberof,olcDatabase={1}{{ LDAP_BACKEND }},cn=config
+changetype: add
+objectClass: olcOverlayConfig
+objectClass: olcMemberOf
+olcOverlay: {0}memberof
+olcMemberOfDangling: error
+olcMemberOfRefInt: TRUE
+olcMemberOfGroupOC: permissionSH
+olcMemberOfMemberAD: inheritPermission
+olcMemberOfMemberOfAD: permission
